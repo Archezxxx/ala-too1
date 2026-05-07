@@ -1,6 +1,4 @@
-import { Outlet, Link, createRootRoute, HeadContent, Scripts } from "@tanstack/react-router";
-
-import appCss from "../styles.css?url";
+import { Outlet, Link, createRootRoute } from "@tanstack/react-router";
 
 function NotFoundComponent() {
   return (
@@ -25,55 +23,9 @@ function NotFoundComponent() {
 }
 
 export const Route = createRootRoute({
-  head: () => ({
-    meta: [
-      { charSet: "utf-8" },
-      { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Гостиница Ала-Тоо — Раззаков, Баткен, Кыргызстан" },
-      {
-        name: "description",
-        content:
-          "Гостиница Ала-Тоо в городе Раззаков, Баткен — уютные номера с видом на горы. Бронирование через WhatsApp. Сайт на 4 языках.",
-      },
-      { name: "author", content: "Ala-Too Hotel" },
-      { property: "og:title", content: "Гостиница Ала-Тоо — Раззаков, Баткен, Кыргызстан" },
-      { property: "og:description", content: "Ala-Too AI Booking is a frontend hotel website for booking rooms with AI-inspired design." },
-      { property: "og:type", content: "website" },
-      { name: "twitter:card", content: "summary_large_image" },
-      { name: "twitter:title", content: "Гостиница Ала-Тоо — Раззаков, Баткен, Кыргызстан" },
-      { name: "description", content: "Ala-Too AI Booking is a frontend hotel website for booking rooms with AI-inspired design." },
-      { name: "twitter:description", content: "Ala-Too AI Booking is a frontend hotel website for booking rooms with AI-inspired design." },
-      { property: "og:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/0ea2e5f8-0aa7-49a5-ac69-9c587ddf0074/id-preview-936a650b--01ec4a72-efd1-47e2-a775-e950602e0c8f.lovable.app-1778001695452.png" },
-      { name: "twitter:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/0ea2e5f8-0aa7-49a5-ac69-9c587ddf0074/id-preview-936a650b--01ec4a72-efd1-47e2-a775-e950602e0c8f.lovable.app-1778001695452.png" },
-    ],
-    links: [
-      { rel: "stylesheet", href: appCss },
-      { rel: "preconnect", href: "https://fonts.googleapis.com" },
-      { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "anonymous" },
-      {
-        rel: "stylesheet",
-        href: "https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Manrope:wght@300;400;500;600;700&family=Noto+Sans+SC:wght@400;500;600&display=swap",
-      },
-    ],
-  }),
-  shellComponent: RootShell,
   component: RootComponent,
   notFoundComponent: NotFoundComponent,
 });
-
-function RootShell({ children }: { children: React.ReactNode }) {
-  return (
-    <html lang="en">
-      <head>
-        <HeadContent />
-      </head>
-      <body>
-        {children}
-        <Scripts />
-      </body>
-    </html>
-  );
-}
 
 function RootComponent() {
   return <Outlet />;
